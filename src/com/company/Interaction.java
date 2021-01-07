@@ -24,7 +24,6 @@ public class Interaction {
     }
 
     //setter and getters
-
     public String getId() {
         return id;
     }

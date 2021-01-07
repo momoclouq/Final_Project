@@ -16,5 +16,9 @@ public class Main {
         //models: Lead, Interaction, view: view, controller: Controller
         //Controller will get date from the model and display them using view
         //Files management will also be done using the Controller (maybe using a different class? FileManager?)
+
+        //Problems for discussion:
+        //Create a FileControl class to control the file?
+        //Combine input validation with View or separate them out and create a different class InputValidation?
     }
 }
