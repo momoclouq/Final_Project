@@ -20,5 +20,6 @@ public class Main {
         //Problems for discussion:
         //Create a FileControl class to control the file?
         //Combine input validation with View or separate them out and create a different class InputValidation?
+        //check menu input for getMenuInputRepeat
     }
 }

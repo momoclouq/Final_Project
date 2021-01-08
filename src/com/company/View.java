@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class View {
@@ -13,7 +14,7 @@ public class View {
     }
 
     //show the main menu and ask the user for String input and return a value back to the controller
-    //argument:
+    //argument: a Scanner
     //return an int value: {1,2,3}
     public int mainMenu(Scanner input){
         System.out.println("\t Enter \"1\" or \"lead\" to manage leads.");
@@ -22,20 +23,11 @@ public class View {
 
         //input validation: should it be a class?
         System.out.print("choice: ");
-        String choice = input.nextLine().trim().toLowerCase();
-        boolean cont = true; //quit the program if the user wants
-        do{
-            if (choice.equals("1") || choice.equals("lead")) return 1;
-            if (choice.equals("2") || choice.equals("interaction")) return 2;
-            if (choice.equals("3") || choice.equals("report") || choice.equals("stats")) return 3;
-            System.out.print("Continue (y/n)? ");
-            if (Character.toLowerCase(input.nextLine().trim().charAt(0)) == 'n') cont = false;
-            else System.out.print("choice again: ");
-        } while (cont);
-        return 0;
+        return Validation.getMenuInputRepeat(input, "main");
     }
 
     //show the sub menu for lead management: managing leads and ask the user for String input
+    //argument: a Scanner
     //return an int value: {4,5,6,7}
     public int subMenuLead(Scanner input){
         System.out.println("\t Enter \"1\" or \"view list\" to view the list of all leads.");
@@ -45,23 +37,32 @@ public class View {
 
         //input validation: should it be a class? yes
         System.out.print("choice: ");
-        String choice = input.nextLine().trim().toLowerCase();
-        boolean cont = true; //quit the program if the user wants
-        do{
-            if (choice.equals("1") || choice.equals("view list")) return 4;
-            if (choice.equals("2") || choice.equals("add") || choice.equals("enter details")) return 5;
-            if (choice.equals("3") || choice.equals("delete")) return 6;
-            if (choice.equals("4") || choice.equals("update")) return 7;
-            System.out.print("Continue (y/n)? ");
-            if (Character.toLowerCase(input.nextLine().trim().charAt(0)) == 'n') cont = false;
-            else System.out.print("choice again: ");
-        } while (cont);
+        return Validation.getMenuInputRepeat(input, "lead");
+    }
+
+    //show the sub menu for interaction management: managing interactions and ask the user for String input
+    //argument: a Scanner
+    //return an int value: {8,9,10,11}
+    public int subMenuInteraction(Scanner input){
+        //implement here
         return 0;
     }
 
-
-
+    //show the sub menu for report management: showing reports and ask for String input
+    //argument: a Scanner
+    //return an int value: {12,13,14}
+    public int subMenuReport(Scanner input){
+        //implement here
+        return 0;
+    }
 
     //Lead viewing section////////////////////////////////////////////
+    //view all leads in the system
+    //argument: none
+    //return void
+    public void viewListLead(ArrayList<Lead> listOfLeads){
+        //implement
+    }
+
     //public Lead updateLeadMenu(){}
 }
