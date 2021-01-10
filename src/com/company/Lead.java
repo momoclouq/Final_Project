@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Date;
 
-public class Lead {
+public class Lead{
     //testing area
     public static void main(String[] args){
         //write your test here
@@ -17,7 +17,7 @@ public class Lead {
     private String address;
 
     //constructors
-    //Only create a lead when we have all the requirements, so we just have one constructor
+    //Only create a lead when we have all the requirements
     public Lead(int id, String name, Date dateOfBirth, boolean gender, String phone, String email, String address){
         this.id = processId(id);
         this.name = name;
@@ -28,6 +28,15 @@ public class Lead {
         this.address = address;
     }
 
+    public Lead(String id, String name, Date dateOfBirth, boolean gender, String phone, String email, String address) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
     //Turn an int id to the correct format of lead_xxx
     //validation will be handled in the controller class
     private String processId(int id){

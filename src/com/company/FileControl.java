@@ -15,10 +15,10 @@ public class FileControl {
     //used with updating and deleting data, IOException caught
     //argument: an array of Data(Lead/Interaction)
     //return nothing
-    public void fileUpdate(ArrayList<Lead> listOfData) {
+    public void fileUpdate(ArrayList<Object> listOfData) {
         try {
             PrintWriter output = new PrintWriter(file);
-            for (Lead data : listOfData) {
+            for (Object data : listOfData) {
                 output.println(data);
             }
             output.close();
