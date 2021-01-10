@@ -24,7 +24,7 @@ public class Controller {
         this.leadFile = new FileControl("leads.csv");
         this.interactionFile = new FileControl("interactions.csv");
 
-        //implements
+        //implements - Member: Khang
         //update listOfLeads and listOfInteractions from fileControl
 
         this.view = new View();

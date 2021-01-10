@@ -17,13 +17,13 @@ public class FileControl {
     //return nothing
     public void fileUpdate(ArrayList<Object> listOfData) {
         try {
-            PrintWriter output = new PrintWriter(file);
-            for (Object data : listOfData) {
-                output.println(data);
-            }
-            output.close();
+            //implements - Member: Trung
         } catch (IOException ex) {
             System.out.print("IO problem with up updating files, error: " + ex.getMessage());
         }
+    }
+
+    public void fileUpdateAppend(Object data){
+        //implements - Member: Tae
     }
 }

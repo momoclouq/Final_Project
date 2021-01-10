@@ -73,7 +73,7 @@ public class Validation {
         String choice = input.nextLine().trim().toLowerCase();
         boolean cont = true; //quit the program if the user wants
         do{
-            //implement
+            //implement - Member: Trung
             //similar to lead, replace with interaction, check return value in the controller
             if (choice.equals("end")) return "end";
 
@@ -91,7 +91,7 @@ public class Validation {
         String choice = input.nextLine().trim().toLowerCase();
         boolean cont = true; //quit the program if the user wants
         do{
-            //implement
+            //implement - Member: Khang
             //similar to lead, replace with report, check return value in the controller
             if (choice.equals("end")) return "end";
 
@@ -105,68 +105,68 @@ public class Validation {
     }
 
     public Lead getNewLeadInput(){
-        //implement with basic data input
+        //implement with basic data input - Member: Dat
         return new Lead();
     }
 
     public Interaction getNewInteractionInput(){
-        //implement with basic data input
+        //implement with basic data input - Member: Tae
         return new Interaction();
     }
 
     //basic data input
     public int getCurrentLeadIdInput(){
-        //implement with listOfLeads
+        //implement with listOfLeads - Member: Khang
         return 1;
     }
 
     public String getLeadNameInput(){
-        //implement
+        //implement - Member: Trung
         return "name";
     }
 
     public Date getLeadDateOfBirthInput(){
-        //implement
+        //implement - Member: Dat
         return new Date();
     }
 
     public boolean getLeadGenderInput(){
-        //implement
+        //implement - Member: Tae
         return true;
     }
 
     public String getLeadPhoneInput(){
-        //implement
+        //implement - Member: Khang
         return "phone";
     }
 
     public String getLeadEmailInput(){
-        //implement
+        //implement - Member: Tae
         return "email";
     }
 
     public String getLeadAddressInput(){
-        //implement
+        //implement - Member: Trung
         return "address";
     }
 
     public int getCurrentInteractionIdInput(){
-        //implement with listOfInteractions
+        //implement with listOfInteractions - Member: Tae
         return 1;
     }
 
     public Date getInteractionDateInput(){
-        //implement
+        //implement - Member: Trung
         return new Date();
     }
 
     public String getMeanOfInteractionInput(){
-        //implement
+        //implement - Member: Dat
         return "mean";
     }
 
     public String getInteractionPotentialInput(){
-        //implement
+        //implement - Member: Trung
         return "potential";
     }
 }

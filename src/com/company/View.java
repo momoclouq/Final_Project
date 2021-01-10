@@ -38,55 +38,55 @@ public class View {
     }
 
     public String subMenuReport(){
-        //implement here
+        //implement - Member: Khang
         return "output";
     }
 
     public void viewLeadList(Lead[] listOfLeads){
-        //implement
+        //implement - Member: Trung
     }
 
     public Lead addLeadMenu(){
-        //implement
+        //implement - Member: Dat
     }
 
     public int deleteLeadMenu(){
-        //implement
+        //implement - Member: Khang
     }
 
     public int updateLeadMenu(){
-        //implement
+        //implement - Member: Tae
     }
 
     //Interaction viewing section////////////////////////////////////////////
     public void viewInteractionList(){
-        //implement
+        //implement - Member: Dat
     }
 
     public Interaction addInteractionMenu(){
-        //implement
+        //implement - Member: Tae
     }
 
     public int deleteInteractionMenu(){
-        //implement
+        //implement - Member Trung
         return 1;
     }
 
     public int updateInteractionMenu(){
-        //implement
+        //implement - Member: Khang
         return 1;
     }
 
     //report viewing section////////////////////////////////////////////
     public void viewReportLeadByAge(Report report){
-        //implement
+        //implement - Member: Tae
     }
 
     public void viewReportInteractionByPotential(Report report){
-        //implement
+        //implement - Member: Khang
     }
 
     public void viewReportInteractionByMonth(Report report){
-        //implement
+        //implement - Member: Dat
     }
 }
