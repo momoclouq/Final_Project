@@ -33,7 +33,7 @@ public class View {
     }
 
     public String subMenuInteraction(){
-        //implement here
+        //implement - Member: Tae
         return "output";
     }
 
@@ -48,14 +48,17 @@ public class View {
 
     public Lead addLeadMenu(){
         //implement - Member: Dat
+        return new Lead();
     }
 
     public int deleteLeadMenu(){
         //implement - Member: Khang
+        return 1;
     }
 
     public int updateLeadMenu(){
         //implement - Member: Tae
+        return 1;
     }
 
     //Interaction viewing section////////////////////////////////////////////
@@ -65,6 +68,7 @@ public class View {
 
     public Interaction addInteractionMenu(){
         //implement - Member: Tae
+        return new Interaction();
     }
 
     public int deleteInteractionMenu(){
@@ -78,15 +82,15 @@ public class View {
     }
 
     //report viewing section////////////////////////////////////////////
-    public void viewReportLeadByAge(Report report){
+    public void viewReportLeadByAge(ArrayList<ReportData> output){
         //implement - Member: Tae
     }
 
-    public void viewReportInteractionByPotential(Report report){
+    public void viewReportInteractionByPotential(ArrayList<ReportData> output){
         //implement - Member: Khang
     }
 
-    public void viewReportInteractionByMonth(Report report){
+    public void viewReportInteractionByMonth(ArrayList<ReportData> output){
         //implement - Member: Dat
     }
 }

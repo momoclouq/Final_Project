@@ -1,21 +1,25 @@
 package com.company;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Interaction {
     private String id;
-    private Date dateOfInteraction;
+    private Calendar dateOfInteraction;
     private Lead lead;
     private String meanOfInteraction; //this can be implemented with an array of means?
     private String potential; //Array of potential?
 
     //constructor - all detail has to be initialized
-    public Interaction(int id, Date dateOfInteraction, Lead lead, String meanOfInteraction, String potential){
+    public Interaction(int id, Calendar dateOfInteraction, Lead lead, String meanOfInteraction, String potential){
         this.id = processId(id);
         this.dateOfInteraction = dateOfInteraction;
         this.lead = lead;
         this.meanOfInteraction = meanOfInteraction;
         this.potential = potential;
+    }
+
+    public Interaction(){
+        //this is just temporary, after implementation of the methods in class View and Validation, this constructor will be deleted
     }
 
     //process the int id to the string id
@@ -32,11 +36,11 @@ public class Interaction {
         this.id = id;
     }
 
-    public Date getDateOfInteraction() {
+    public Calendar getDateOfInteraction() {
         return dateOfInteraction;
     }
 
-    public void setDateOfInteraction(Date dateOfInteraction) {
+    public void setDateOfInteraction(Calendar dateOfInteraction) {
         this.dateOfInteraction = dateOfInteraction;
     }
 

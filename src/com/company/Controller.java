@@ -95,16 +95,16 @@ public class Controller {
         }
 
         //implements
-        //currentLocation = "addLead" -> "lead"
-        //currentLocation = "deleteLead" -> "lead"
-        //currentLocation = "updateLead" -> "lead"
-        //currentLocation = "viewInteractionList" -> "lead"
-        //currentLocation = "addInteraction" -> "lead"
-        //currentLocation = "deleteInteraction" -> "lead"
-        //currentLocation = "updateInteraction" -> "lead"
-        //currentLocation = "report1" -> "lead"
-        //currentLocation = "report2" -> "lead"
-        //currentLocation = "report3" -> "lead"
+        //currentLocation = "addLead" -> "lead" - Member: Trung
+        //currentLocation = "deleteLead" -> "lead" - Member: Khang
+        //currentLocation = "updateLead" -> "lead" - Member: Tae
+        //currentLocation = "viewInteractionList" -> "lead" - Member: Dat
+        //currentLocation = "addInteraction" -> "lead" - Member: Trung
+        //currentLocation = "deleteInteraction" -> "lead" - Member: Khang
+        //currentLocation = "updateInteraction" -> "lead" - Member: Tae
+        //currentLocation = "report1" -> "lead" - Member: Dat
+        //currentLocation = "report2" -> "lead" - Member: Tae
+        //currentLocation = "report3" -> "lead" - Member: Trung
         return "end";
     }
 }

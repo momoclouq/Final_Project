@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -125,9 +126,9 @@ public class Validation {
         return "name";
     }
 
-    public Date getLeadDateOfBirthInput(){
+    public Calendar getLeadDateOfBirthInput(){
         //implement - Member: Dat
-        return new Date();
+        return Calendar.getInstance();
     }
 
     public boolean getLeadGenderInput(){
@@ -155,9 +156,9 @@ public class Validation {
         return 1;
     }
 
-    public Date getInteractionDateInput(){
+    public Calendar getInteractionDateInput(){
         //implement - Member: Trung
-        return new Date();
+        return Calendar.getInstance();
     }
 
     public String getMeanOfInteractionInput(){

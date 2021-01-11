@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Lead{
@@ -10,7 +11,7 @@ public class Lead{
 
     private String id;
     private String name;
-    private Date dateOfBirth;
+    private Calendar dateOfBirth;
     private boolean gender; //true is male, false is female
     private String phone;
     private String email;
@@ -18,7 +19,7 @@ public class Lead{
 
     //constructors
     //Only create a lead when we have all the requirements
-    public Lead(int id, String name, Date dateOfBirth, boolean gender, String phone, String email, String address){
+    public Lead(int id, String name, Calendar dateOfBirth, boolean gender, String phone, String email, String address){
         this.id = processId(id);
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -28,7 +29,7 @@ public class Lead{
         this.address = address;
     }
 
-    public Lead(String id, String name, Date dateOfBirth, boolean gender, String phone, String email, String address) {
+    public Lead(String id, String name, Calendar dateOfBirth, boolean gender, String phone, String email, String address) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -36,6 +37,10 @@ public class Lead{
         this.phone = phone;
         this.email = email;
         this.address = address;
+    }
+
+    public Lead(){
+        //this is just temporary, after implementation of the methods in class View and Validation, this constructor will be deleted
     }
     //Turn an int id to the correct format of lead_xxx
     //validation will be handled in the controller class
@@ -60,11 +65,11 @@ public class Lead{
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
+    public Calendar getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(Calendar dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
