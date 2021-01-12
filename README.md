@@ -16,6 +16,9 @@
 - Class "View": Show the output to the console and return required input (validated by "Validation" class), which will be moved to the Controller for processing
 - Class "Validation": check the String input from the console and return the processed data from the input
 - Class "FileControl": update the file based on the data stored in the Controller, initialize the data in the Controller at the start of the program
+- Class "Report": a special Model type class, an abstract class for 2 specific type of Report: ReportLead and ReportInteraction.
+  1. ReportLead will deal with Lead and ReportInteraction will deal with Interaction respectively. The actual data will be instances of ReportData class
+  2. .getOutput() will return an arrayList of ReportData. The formation of ReportData arrayList depends on the command of the constructor.
 
 ## What to do?
 - Finish the parts with the comment "implements" and your name next to it (Member: ...)
