@@ -38,4 +38,4 @@
 - FileControl: update the changes in the data to the file (write the whole list of Data to the file)
 
 ## I think this is wrong! I need help? I still dont understand the system? Algorithm? Java knowledge?
-- Ask Minh or Dat
+- Ask Minh or Dat 
