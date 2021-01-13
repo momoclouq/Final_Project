@@ -116,7 +116,7 @@ public class Validation {
     }
 
     //basic data input
-    public int getCurrentLeadIdInput(){
+    public static int getCurrentLeadIdInput(){
         //implement with listOfLeads - Member: Khang
         return 1;
     }

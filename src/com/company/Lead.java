@@ -3,7 +3,7 @@ package com.company;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Lead{
+public class Lead implements Data{
     //testing area
     public static void main(String[] args){
         //write your test here
@@ -105,5 +105,10 @@ public class Lead{
         this.address = address;
     }
 
-    //Override toString to print a lead? or implement it directly
+    //write this data to a file with this method
+    @Override
+    public String toFileFormat(){
+        //implement - Member: Dat
+        return "";
+    }
 }

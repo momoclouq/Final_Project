@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Calendar;
 
-public class Interaction {
+public class Interaction implements Data{
     private String id;
     private Calendar dateOfInteraction;
     private Lead lead;
@@ -66,5 +66,12 @@ public class Interaction {
 
     public void setPotential(String potential) {
         this.potential = potential;
+    }
+
+    //write this data to a file with this method
+    @Override
+    public String toFileFormat(){
+        //implement - Member: Dat
+        return "";
     }
 }

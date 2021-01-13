@@ -13,8 +13,6 @@ public class Controller {
     private Lead[] listOfLeads = new Lead[100000];
     private Interaction[] listOfInteraction = new Interaction[100000];
     private View view;
-    private int indexLead;
-    private int indexInteraction;
     private FileControl leadFile;
     private FileControl interactionFile;
     private Validation validate;
@@ -94,17 +92,21 @@ public class Controller {
             return "lead";
         }
 
+        if (currentLocation.equals("deleteLead")){
+            //implement - Member: Tae
+        }
+
         //implements
         //currentLocation = "addLead" -> "lead" - Member: Trung
-        //currentLocation = "deleteLead" -> "lead" - Member: Khang
-        //currentLocation = "updateLead" -> "lead" - Member: Tae
+        //currentLocation = "deleteLead" -> "lead" - Member: Tae
+        //currentLocation = "updateLead" -> "lead" - Member: Khang
         //currentLocation = "viewInteractionList" -> "lead" - Member: Dat
         //currentLocation = "addInteraction" -> "lead" - Member: Trung
         //currentLocation = "deleteInteraction" -> "lead" - Member: Khang
         //currentLocation = "updateInteraction" -> "lead" - Member: Tae
-        //currentLocation = "report1" -> "lead" - Member: Dat
-        //currentLocation = "report2" -> "lead" - Member: Tae
-        //currentLocation = "report3" -> "lead" - Member: Trung
+        //currentLocation = "report1" -> "main" - Member: Dat
+        //currentLocation = "report2" -> "main" - Member: Tae
+        //currentLocation = "report3" -> "main" - Member: Trung
         return "end";
     }
 }

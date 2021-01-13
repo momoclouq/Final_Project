@@ -33,8 +33,13 @@ public class View {
     }
 
     public String subMenuInteraction(){
-        //implement - Member: Tae
-        return "output";
+        System.out.println("\t Enter \"1\" or \"view list\" to view the list of all leads.");
+        System.out.println("\t Enter \"2\" or \"add\"/\"enter detail\" to add a new lead.");
+        System.out.println("\t Enter \"3\" or \"delete\" to delete a lead.");
+        System.out.println("\t Enter \"4\" or \"update\" to update a lead");
+
+        System.out.print("choice: ");
+        return Validation.getInteractionMenuInput();
     }
 
     public String subMenuReport(){
@@ -57,13 +62,27 @@ public class View {
     }
 
     public int updateLeadMenu(){
-        //implement - Member: Tae
+        //implement - Member: Khang
+        System.out.println("enter lead id: ");
+
         return 1;
+    }
+
+    public Lead getNewLead(){
+        //implement - Member: Minh
+        System.out.println("Enter data for the lead: ");
+
+        return new Lead();
     }
 
     //Interaction viewing section////////////////////////////////////////////
     public void viewInteractionList(){
         //implement - Member: Dat
+    }
+
+    public Interaction getNewInteraction(){
+        //implements - Member: minh
+        return new Interaction();
     }
 
     public Interaction addInteractionMenu(){
@@ -77,7 +96,7 @@ public class View {
     }
 
     public int updateInteractionMenu(){
-        //implement - Member: Khang
+        //implement - Member: Dat
         return 1;
     }
 

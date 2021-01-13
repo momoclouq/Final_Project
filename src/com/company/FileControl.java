@@ -15,16 +15,19 @@ public class FileControl {
     //used with updating and deleting data, IOException caught
     //argument: an array of Data(Lead/Interaction)
     //return nothing
-    public void fileUpdateAll(Object[] listOfData) {
+    public void fileUpdateAll(Data[] listOfData) {
         try {
-            //implements - Member: Trung
-            if (1 > 0) throw new IOException();
+            PrintWriter output = new PrintWriter(this.file);
+            for (Data data: listOfData){
+                output.println(data.toFileFormat());
+            }
+            output.close();
         } catch (IOException ex) {
             System.out.print("IO problem with up updating files, error: " + ex.getMessage());
         }
     }
 
-    public void fileUpdateAppend(Object data){
+    public void fileUpdateAppend(Data data){
         //implements - Member: Tae
     }
 }
