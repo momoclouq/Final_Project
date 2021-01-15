@@ -1,5 +1,7 @@
 package com.company;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -128,7 +130,29 @@ public class Validation {
 
     public Calendar getLeadDateOfBirthInput(){
         //implement - Member: Dat
-        return Calendar.getInstance();
+        Scanner in = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.print("Enter the date of Birth of the Lead(DD/MM/YYYY): ");
+        String dateOfBirth = in.nextLine();
+        sdf.setLenient(false);
+        Calendar cal = Calendar.getInstance();
+        boolean valid = false;
+
+        while (!valid) {
+
+            try {
+                Date date = sdf.parse(dateOfBirth);
+                cal.setTime(date);
+                valid = true;
+            } catch (ParseException e) {
+                System.out.print("Invalid. Please re-enter the date of birth (DD/MM/YYYY): ");
+                dateOfBirth = in.nextLine();
+                continue;
+            }
+
+        }
+
+        return cal;
     }
 
     public boolean getLeadGenderInput(){
@@ -163,7 +187,22 @@ public class Validation {
 
     public String getMeanOfInteractionInput(){
         //implement - Member: Dat
-        return "mean";
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the means of the interaction \n1. Email \n2. Telephone \n3. Face to Face \n4. Social Media ");
+        System.out.print("Enter the choice: ");
+        String choice = in.nextLine().toLowerCase();
+        do{
+            if (choice.equals("1") || choice.equalsIgnoreCase("email"))return "email";
+            if (choice.equals("2") || choice.equalsIgnoreCase("telephone")) return "telephone";
+            if (choice.equals("3") || choice.equalsIgnoreCase("face to face")) return "face to face";
+            if (choice.equals("4") || choice.equalsIgnoreCase("social Media")) return "social media";
+
+
+            //wrong input
+            System.out.print("Invalid option. Enter choice again: ");
+            choice = in.nextLine().toLowerCase();
+        } while (true);
+
     }
 
     public String getInteractionPotentialInput(){
