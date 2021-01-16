@@ -157,7 +157,18 @@ public class Validation {
 
     public boolean getLeadGenderInput(){
         //implement - Member: Tae
-        return true;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter your gender \n1. Male(m) \n2. Female(f) ");
+        System.out.print("Enter the choice: ");
+        String gender = input.nextLine().trim().toLowerCase();
+        do{
+            if (gender.equals("1") || gender.equalsIgnoreCase("male")) return true;
+            if (gender.equals("2") || gender.equalsIgnoreCase("female")) return false;
+
+            //wrong input
+            System.out.print("Wrong menu option. Enter choice again: ");
+            gender = input.nextLine().trim().toLowerCase();
+        } while (true);
     }
 
     public String getLeadPhoneInput(){
