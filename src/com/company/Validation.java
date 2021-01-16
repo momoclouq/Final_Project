@@ -178,7 +178,17 @@ public class Validation {
 
     public String getLeadEmailInput(){
         //implement - Member: Tae
-        return "email";
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter your email address: ");
+        String email = input.nextLine().trim().toLowerCase();
+        do {
+            if (email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$")) return email;
+
+            //wrong input
+            System.out.println("Invalid format. Enter another one: ");
+            email = input.nextLine().trim().toLowerCase();
+
+        }while (true);
     }
 
     public String getLeadAddressInput(){
@@ -188,6 +198,7 @@ public class Validation {
 
     public int getCurrentInteractionIdInput(){
         //implement with listOfInteractions - Member: Tae
+
         return 1;
     }
 
