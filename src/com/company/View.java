@@ -49,6 +49,9 @@ public class View {
 
     public void viewLeadList(Lead[] listOfLeads){
         //implement - Member: Trung
+        for (int i = 0; i < listOfLeads.length; i++) {
+            System.out.println(listOfLeads[i]);
+        }
     }
 
     public Lead addLeadMenu(){
@@ -76,8 +79,11 @@ public class View {
         return newLead;
     }
     //Interaction viewing section////////////////////////////////////////////
-    public void viewInteractionList(){
+    public void viewInteractionList(Interaction[] listOfInteraction){
         //implement - Member: Dat
+        for (int i = 0; i < listOfInteraction.length; i++) {
+            System.out.println(listOfInteraction[i]);
+        }
     }
 
     public Interaction getNewInteraction(int id){
@@ -95,6 +101,10 @@ public class View {
 
     public int deleteInteractionMenu(){
         //implement - Member: Trung
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter id of interaction that you want to delete");
+        int interactionID= scanner.nextInt();
+        //check if this id input is in the interaction list or not
         return 1;
     }
 

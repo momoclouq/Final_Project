@@ -94,6 +94,12 @@ public class Controller {
             return "lead";
         }
 
+        if (currentLocation.equals("viewInteractionList")){
+            //implement - Member: Trung
+            this.view.viewInteractionList(listOfInteraction);
+            return "lead";
+        }
+
         if (currentLocation.equals("deleteLead")){
             //implement - Member: Tae
         }
@@ -102,7 +108,7 @@ public class Controller {
         //currentLocation = "addLead" -> "lead" - Member: Trung
         //currentLocation = "deleteLead" -> "lead" - Member: Tae
         //currentLocation = "updateLead" -> "lead" - Member: Khang
-        //currentLocation = "viewInteractionList" -> "lead" - Member: Dat
+        //currentLocation = "viewInteractionList" -> "lead" - Member: Trung
         //currentLocation = "addInteraction" -> "lead" - Member: Trung
         //currentLocation = "deleteInteraction" -> "lead" - Member: Khang
         //currentLocation = "updateInteraction" -> "lead" - Member: Tae

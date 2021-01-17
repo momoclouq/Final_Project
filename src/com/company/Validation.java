@@ -79,15 +79,18 @@ public class Validation {
         do{
             //implement - Member: Trung
             //similar to lead, replace with interaction, check return value in the controller
+            if (choice.equals("1") || choice.equals("view interaction list"))return "viewInteractionList";
+            if (choice.equals("2") || choice.equals("add interaction") || choice.equals("add")) return "addInteraction";
+            if (choice.equals("3") || choice.equals("delete interaction") || choice.equals("delete")) return "deleteInteraction";
+            if (choice.equals("4") || choice.equals("update interaction") || choice.equals("update")) return "update";
             if (choice.equals("end")) return "end";
 
             //wrong input
             System.out.print("Wrong menu option. Enter choice again: ");
             choice = input.nextLine().trim().toLowerCase();
-            break;
         } while (true);
         //delete this line when implemented
-        return "end";
+
     }
 
     public static String getReportMenuInput(){
@@ -130,7 +133,16 @@ public class Validation {
 
     public String getLeadNameInput(){
         //implement - Member: Trung
-        return "name";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter lead name");
+        String name = scanner.nextLine();
+        do{
+            if (name.matches("^[\\p{L} .'-]+$")) return name;
+
+            //wrong input
+            System.out.println("Invalid format. Enter another one: ");
+            name = scanner.nextLine().trim();
+        } while (true);
     }
 
     public Calendar getLeadDateOfBirthInput(){
@@ -209,7 +221,16 @@ public class Validation {
 
     public String getLeadAddressInput(){
         //implement - Member: Trung
-        return "address";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter lead address");
+        String address = scanner.nextLine();
+        do{
+            if (address.matches("[A-Za-z0-9'\\.\\-\\s\\,]")) return address;
+
+            //wrong input
+            System.out.println("Invalid format. Enter another one: ");
+            address = scanner.nextLine().trim();
+        } while (true);
     }
 
     public int getCurrentInteractionIdInput(){
@@ -220,7 +241,29 @@ public class Validation {
 
     public Calendar getInteractionDateInput(){
         //implement - Member: Trung
-        return Calendar.getInstance();
+        Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.print("Enter the interaction date (DD/MM/YYYY): ");
+        String interactionDate = scanner.nextLine();
+        sdf.setLenient(false);
+        Calendar calendar = Calendar.getInstance();
+        boolean valid = false;
+
+        while (!valid) {
+
+            try {
+                Date date = sdf.parse(interactionDate);
+                calendar.setTime(date);
+                valid = true;
+            } catch (ParseException e) {
+                System.out.print("Invalid. Please re-enter the date of birth (DD/MM/YYYY): ");
+                interactionDate = scanner.nextLine();
+                continue;
+            }
+
+        }
+
+        return calendar;
     }
 
     public String getMeanOfInteractionInput(){
@@ -245,6 +288,17 @@ public class Validation {
 
     public String getInteractionPotentialInput(){
         //implement - Member: Trung
-        return "potential";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter interaction potential positive/neutral/negative");
+        String potential = scanner.nextLine().trim().toLowerCase();
+        do{
+            if (potential.equals("positive"))return potential;
+            if (potential.equals("neutral"))return potential;
+            if (potential.equals("negative"))return potential;
+
+            //wrong input
+            System.out.println("Invalid format. Enter another one: ");
+            potential = scanner.nextLine().trim().toLowerCase();
+        } while (true);
     }
 }
