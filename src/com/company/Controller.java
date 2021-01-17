@@ -13,6 +13,8 @@ public class Controller {
     private Lead[] listOfLeads = new Lead[100000];
     private Interaction[] listOfInteraction = new Interaction[100000];
     private View view;
+    private int indexLead;
+    private int indexInteraction;
     private FileControl leadFile;
     private FileControl interactionFile;
     private Validation validate;

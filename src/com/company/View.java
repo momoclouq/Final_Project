@@ -68,21 +68,24 @@ public class View {
         return 1;
     }
 
-    public Lead getNewLead(){
+    public Lead getNewLead(int id){
         //implement - Member: Minh
-        System.out.println("Enter data for the lead: ");
+        System.out.println("\tEnter data for the new lead. " + id);
+        Lead newLead = Validation.getNewLeadInput(id);
 
-        return new Lead();
+        return newLead;
     }
-
     //Interaction viewing section////////////////////////////////////////////
     public void viewInteractionList(){
         //implement - Member: Dat
     }
 
-    public Interaction getNewInteraction(){
+    public Interaction getNewInteraction(int id){
         //implements - Member: minh
-        return new Interaction();
+        System.out.println("\tEnter data for the new Interaction. " + id);
+        Interaction newInteraction = Validation.getNewInteractionInput(id);
+
+        return newInteraction;
     }
 
     public Interaction addInteractionMenu(){
@@ -91,7 +94,7 @@ public class View {
     }
 
     public int deleteInteractionMenu(){
-        //implement - Member Trung
+        //implement - Member: Trung
         return 1;
     }
 

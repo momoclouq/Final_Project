@@ -107,12 +107,12 @@ public class Validation {
         return "end";
     }
 
-    public Lead getNewLeadInput(){
+    public static Lead getNewLeadInput(int id){
         //implement with basic data input - Member: Dat
         return new Lead();
     }
 
-    public Interaction getNewInteractionInput(){
+    public static Interaction getNewInteractionInput(int id){
         //implement with basic data input - Member: Tae
         return new Interaction();
     }
@@ -120,6 +120,7 @@ public class Validation {
     //basic data input
     public static int getCurrentLeadIdInput(){
         //implement with listOfLeads - Member: Khang
+        //note: this is to check if the lead with id entered by the user is in the listOfLeads or not
         return 1;
     }
 
@@ -198,7 +199,7 @@ public class Validation {
 
     public int getCurrentInteractionIdInput(){
         //implement with listOfInteractions - Member: Tae
-
+        //this is to check if the interaction id input is in the interaction list or not
         return 1;
     }
 
