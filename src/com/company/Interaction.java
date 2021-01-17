@@ -72,6 +72,6 @@ public class Interaction implements Data{
     @Override
     public String toFileFormat(){
         //implement - Member: Dat
-        return "";
+        return id + "," + dateOfInteraction.get(dateOfInteraction.YEAR) + "-" + (dateOfInteraction.get(dateOfInteraction.MONTH) +1) + "-" +dateOfInteraction.get(dateOfInteraction.DATE) + "," + lead.getId() + "," + meanOfInteraction + "," + potential;
     }
 }

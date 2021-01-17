@@ -109,6 +109,6 @@ public class Lead implements Data{
     @Override
     public String toFileFormat(){
         //implement - Member: Dat
-        return "";
+        return id + "," + dateOfBirth.get(dateOfBirth.YEAR) + "-"+ (dateOfBirth.get(dateOfBirth.MONTH) + 1) + "-" + dateOfBirth.get(dateOfBirth.DATE) + "," + gender + "," + phone + "," + email + "," + address;
     }
 }
