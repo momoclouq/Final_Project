@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Validation {
@@ -96,15 +97,18 @@ public class Validation {
         do{
             //implement - Member: Khang
             //similar to lead, replace with report, check return value in the controller
+            if (choice.equals("1") || choice.equals("display summary report by age"))return "report1";
+            if (choice.equals("2") || choice.equals("display interactions by potential")) return "report2";
+            if (choice.equals("3") || choice.equals("display interactions by month")) return "report3";
             if (choice.equals("end")) return "end";
 
             //wrong input
             System.out.print("Wrong menu option. Enter choice again: ");
             choice = input.nextLine().trim().toLowerCase();
-            break;
+
         } while (true);
         //delete this line when implemented
-        return "end";
+
     }
 
     public Lead getNewLeadInput(){
@@ -173,7 +177,18 @@ public class Validation {
 
     public String getLeadPhoneInput(){
         //implement - Member: Khang
-        return "phone";
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter your phone number: ");
+        String phone_no=scanner.nextLine();
+        String[] phone = phone_no.split("");
+        do {
+            if (phone_no.length() == 10 && phone[0].equals("0")) return phone_no;
+
+            //wrong input
+            System.out.println("Invalid number, try again: ");
+            phone_no=scanner.nextLine().trim().toLowerCase();
+
+        }while (true);
     }
 
     public String getLeadEmailInput(){
