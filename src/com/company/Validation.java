@@ -2,10 +2,7 @@ package com.company;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Validation {
     //testing area
@@ -121,6 +118,25 @@ public class Validation {
 
     public static Interaction getNewInteractionInput(int id){
         //implement with basic data input - Member: Tae
+        Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Enter the date of interaction(dd/mm/yyyy): ");
+        String dateOfInteraction = scanner.nextLine();
+        sdf.setLenient(false);
+        Calendar calendar = Calendar.getInstance();
+
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Enter the lead: ");
+//        Lead lead = scanner.next();
+
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Enter the mean of interaction: ");
+        String meanOfInteraction = scanner.nextLine();
+
+        Scanner scanner3 = new Scanner(System.in);
+        System.out.println("Enter the potential (Positive / Neutral / Negative): ");
+        String potential = scanner.nextLine();
+
         return new Interaction();
     }
 
@@ -233,10 +249,21 @@ public class Validation {
         } while (true);
     }
 
-    public int getCurrentInteractionIdInput(){
+    public int getCurrentInteractionIdInput(int id){
         //implement with listOfInteractions - Member: Tae
         //this is to check if the interaction id input is in the interaction list or not
-        return 1;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the interaction id: ");
+        int interId = scanner.nextInt();
+
+        do{
+            if (id==interId) return interId;
+
+            //wrong input
+            System.out.println("Invalid id. Enter another one: ");
+            interId = scanner.nextInt();
+
+        }while (true);
     }
 
     public Calendar getInteractionDateInput(){
