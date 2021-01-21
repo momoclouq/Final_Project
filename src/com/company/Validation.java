@@ -141,10 +141,18 @@ public class Validation {
     }
 
     //basic data input
-    public static int getCurrentLeadIdInput(){
+    public static int getCurrentLeadIdInput(int id){
         //implement with listOfLeads - Member: Khang
         //note: this is to check if the lead with id entered by the user is in the listOfLeads or not
-        return 1;
+        Scanner scanner=new Scanner(System.in);
+        int c_lead=scanner.nextInt();
+        do {
+            if (id==c_lead) return c_lead;
+
+            //wrong input
+            System.out.println("Enter ");
+            c_lead=scanner.nextInt();
+        }while(true);
     }
 
     public String getLeadNameInput(){

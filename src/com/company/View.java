@@ -64,9 +64,10 @@ public class View {
         return 1;
     }
 
-    public int updateLeadMenu(){
+    public int updateLeadMenu(String id){
         //implement - Member: Khang
         System.out.println("enter lead id: ");
+
 
         return 1;
     }
