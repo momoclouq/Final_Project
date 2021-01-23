@@ -96,6 +96,7 @@ public class View {
 
     public Interaction addInteractionMenu(){
         //implement - Member: Tae
+        //use getNewInteraction
         return new Interaction();
     }
 
