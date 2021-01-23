@@ -104,6 +104,16 @@ public class Controller {
             //implement - Member: Tae
         }
 
+        if (currentLocation.equals("addLead")) {
+            listOfLeads[indexLead] = this.view.addLeadMenu(indexLead);
+            // need to figure out how to increase indexLead safely
+            //indexLead++;
+
+            return "lead";
+        }
+
+
+
         //implements
         //currentLocation = "addLead" -> "lead" - Member: Trung
         //currentLocation = "deleteLead" -> "lead" - Member: Tae

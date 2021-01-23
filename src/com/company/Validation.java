@@ -155,7 +155,7 @@ public class Validation {
         }while(true);
     }
 
-    public String getLeadNameInput(){
+    public static String getLeadNameInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter lead name");
@@ -169,7 +169,7 @@ public class Validation {
         } while (true);
     }
 
-    public Calendar getLeadDateOfBirthInput(){
+    public static Calendar getLeadDateOfBirthInput(){
         //implement - Member: Dat
         Scanner in = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -196,7 +196,7 @@ public class Validation {
         return cal;
     }
 
-    public boolean getLeadGenderInput(){
+    public static boolean getLeadGenderInput(){
         //implement - Member: Tae
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your gender \n1. Male(m) \n2. Female(f) ");
@@ -212,7 +212,7 @@ public class Validation {
         } while (true);
     }
 
-    public String getLeadPhoneInput(){
+    public static String getLeadPhoneInput(){
         //implement - Member: Khang
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter your phone number: ");
@@ -228,7 +228,7 @@ public class Validation {
         }while (true);
     }
 
-    public String getLeadEmailInput(){
+    public static String getLeadEmailInput(){
         //implement - Member: Tae
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your email address: ");
@@ -243,7 +243,7 @@ public class Validation {
         }while (true);
     }
 
-    public String getLeadAddressInput(){
+    public static String getLeadAddressInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter lead address");
@@ -257,7 +257,7 @@ public class Validation {
         } while (true);
     }
 
-    public int getCurrentInteractionIdInput(int id){
+    public static int getCurrentInteractionIdInput(int id){
         //implement with listOfInteractions - Member: Tae
         //this is to check if the interaction id input is in the interaction list or not
         Scanner scanner = new Scanner(System.in);
@@ -274,7 +274,7 @@ public class Validation {
         }while (true);
     }
 
-    public Calendar getInteractionDateInput(){
+    public static Calendar getInteractionDateInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -301,7 +301,7 @@ public class Validation {
         return calendar;
     }
 
-    public String getMeanOfInteractionInput(){
+    public static String getMeanOfInteractionInput(){
         //implement - Member: Dat
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the means of the interaction \n1. Email \n2. Telephone \n3. Face to Face \n4. Social Media ");
@@ -321,7 +321,7 @@ public class Validation {
 
     }
 
-    public String getInteractionPotentialInput(){
+    public static String getInteractionPotentialInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter interaction potential positive/neutral/negative");
