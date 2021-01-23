@@ -1,25 +1,21 @@
 package com.company;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
+
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println("hello team");
-        //!!!!!!!!!
-        //Do not test your codes here
-        //test the methods in the class that contains the methods
-        //use a main method to test (check Lead class for example)
-        //run the project from that class
-
-        //Basic structure of the program:
-        //we will use the MVC model
-        //models: Lead, Interaction, view: view, controller: Controller
-        //Controller will get date from the model and display them using view
-        //Files management will also be done using the Controller (maybe using a different class? FileManager?)
-
-        //Problems for discussion:
-        //Create a FileControl class to control the file?
-        //Combine input validation with View or separate them out and create a different class InputValidation?
-        //check menu input for getMenuInputRepeat
+        try{
+            Controller control = new Controller();
+        } catch (FileNotFoundException ex){
+            System.out.println("File not found");
+        } catch (ParseException ex){
+            System.out.println("file contain wrong input");
+        } catch (IOException ex){
+            System.out.println("io exception");
+        }
     }
 }

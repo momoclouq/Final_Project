@@ -18,6 +18,14 @@ public class Interaction implements Data{
         this.potential = potential;
     }
 
+    public Interaction(String id, Calendar dateOfInteraction, Lead lead, String meanOfInteraction, String potential){
+        this.id = id;
+        this.dateOfInteraction = dateOfInteraction;
+        this.lead = lead;
+        this.meanOfInteraction = meanOfInteraction;
+        this.potential = potential;
+    }
+
     public Interaction(){
         //this is just temporary, after implementation of the methods in class View and Validation, this constructor will be deleted
     }

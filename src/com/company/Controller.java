@@ -1,13 +1,20 @@
 package com.company;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Controller {
     //testing area
     public static void main(String[] args){
-        Controller program = new Controller();
-        program.start();
+        try{
+            Controller program = new Controller();
+            program.start();
+        } catch (Exception ex){
+            System.out.println("error");
+        }
     }
 
     private Lead[] listOfLeads = new Lead[100000];
@@ -20,18 +27,15 @@ public class Controller {
     private Validation validate;
 
     //constructor
-    public Controller(){
+    public Controller() throws IOException, ParseException {
         this.leadFile = new FileControl("leads.csv");
         this.interactionFile = new FileControl("interactions.csv");
-
+        System.out.println("hehe");
         //implements - Member: Khang
         //update listOfLeads and listOfInteractions from fileControl
-
-        this.view = new View();
-        this.validate = new Validation(listOfLeads, listOfInteraction);
+        indexLead = leadFile.transferData(listOfLeads);
+        indexInteraction = interactionFile.transferData(listOfInteraction, listOfLeads);
     }
-
-    //setter and getter
 
     //functions
     //starting the program
@@ -43,6 +47,8 @@ public class Controller {
 
             while (!location.equals("end")) {
                 location = changeLocation(location);
+                //separation line for each location
+                System.out.println("----------------------------");
                 if (location.equals("main")) {
                     System.out.println("Operation done...");
                     System.out.print("");
@@ -97,34 +103,71 @@ public class Controller {
         if (currentLocation.equals("viewInteractionList")){
             //implement - Member: Trung
             this.view.viewInteractionList(listOfInteraction);
-            return "lead";
+            return "interaction";
         }
 
         if (currentLocation.equals("deleteLead")){
             //implement - Member: Tae
-        }
-
-        if (currentLocation.equals("addLead")) {
-            listOfLeads[indexLead] = this.view.addLeadMenu(indexLead);
-            // need to figure out how to increase indexLead safely
-            //indexLead++;
+            int idLeadDelete = View.deleteLeadMenu(listOfLeads);
+            listOfLeads[idLeadDelete] = null;
 
             return "lead";
         }
 
+        if (currentLocation.equals("addLead")) {
+            listOfLeads[indexLead] = View.addLeadMenu(indexLead);
+            indexLead++;
+            return "lead";
+        }
 
+        if (currentLocation.equals("updateLead")){
+            int idLeadUpdate = View.updateLeadMenu(listOfLeads);
+            listOfLeads[idLeadUpdate] = View.getNewLead(idLeadUpdate);
 
-        //implements
-        //currentLocation = "addLead" -> "lead" - Member: Trung
-        //currentLocation = "deleteLead" -> "lead" - Member: Tae
-        //currentLocation = "updateLead" -> "lead" - Member: Khang
-        //currentLocation = "viewInteractionList" -> "lead" - Member: Trung
-        //currentLocation = "addInteraction" -> "lead" - Member: Trung
-        //currentLocation = "deleteInteraction" -> "lead" - Member: Khang
-        //currentLocation = "updateInteraction" -> "lead" - Member: Tae
-        //currentLocation = "report1" -> "main" - Member: Dat
-        //currentLocation = "report2" -> "main" - Member: Tae
-        //currentLocation = "report3" -> "main" - Member: Trung
+            return "lead";
+        }
+
+        if (currentLocation.equals("addInteraction")){
+            listOfInteraction[indexInteraction] = View.getNewInteraction(indexInteraction, listOfLeads);
+            indexInteraction++;
+            return "interaction";
+        }
+
+        if (currentLocation.equals("deleteInteraction")){
+            int correctId = View.deleteInteractionMenu(listOfInteraction);
+            listOfInteraction[correctId] = null;
+
+            System.out.println("End interaction--------------------------");
+            return "interaction";
+        }
+
+        if (currentLocation.equals("updateInteraction")){
+            int idInteractionUpdate = View.updateInteractionMenu(listOfInteraction);
+            listOfInteraction[idInteractionUpdate] = View.getNewInteraction(idInteractionUpdate, listOfLeads);
+
+            return "interaction";
+        }
+
+        if (currentLocation.equals("report1")){
+            ReportLead report = Validation.getReportLead(listOfLeads, "age");
+            View.viewReportLeadByAge(report);
+
+            return "report";
+        }
+
+        if (currentLocation.equals("report2")){
+            ReportInteraction report = Validation.getReportInteraction(listOfInteraction, "potential");
+            View.viewReportInteractionByPotential(report);
+
+            return "report";
+        }
+
+        if (currentLocation.equals("report3")){
+            ReportInteraction report = Validation.getReportInteraction(listOfInteraction, "month");
+            View.viewReportInteractionByPotential(report);
+
+            return "report";
+        }
         return "end";
     }
 }
