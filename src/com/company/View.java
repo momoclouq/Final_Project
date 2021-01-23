@@ -50,13 +50,14 @@ public class View {
     public void viewLeadList(Lead[] listOfLeads){
         //implement - Member: Trung
         for (int i = 0; i < listOfLeads.length; i++) {
-            System.out.println(listOfLeads[i]);
+            System.out.println(listOfLeads[i].toFileFormat());
         }
     }
 
-    public Lead addLeadMenu(){
+    public Lead addLeadMenu(int idIndex){
         //implement - Member: Dat
-        return new Lead();
+        Lead newLead = getNewLead(idIndex);
+        return newLead;
     }
 
     public int deleteLeadMenu(){
@@ -64,16 +65,17 @@ public class View {
         return 1;
     }
 
-    public int updateLeadMenu(){
+    public int updateLeadMenu(String id){
         //implement - Member: Khang
         System.out.println("enter lead id: ");
+
 
         return 1;
     }
 
     public Lead getNewLead(int id){
         //implement - Member: Minh
-        System.out.println("\tEnter data for the new lead. " + id);
+        System.out.println("\tPlease enter data for the new lead.");
         Lead newLead = Validation.getNewLeadInput(id);
 
         return newLead;
@@ -82,7 +84,7 @@ public class View {
     public void viewInteractionList(Interaction[] listOfInteraction){
         //implement - Member: Dat
         for (int i = 0; i < listOfInteraction.length; i++) {
-            System.out.println(listOfInteraction[i]);
+            System.out.println(listOfInteraction[i].toFileFormat());
         }
     }
 
@@ -111,6 +113,7 @@ public class View {
 
     public int updateInteractionMenu(){
         //implement - Member: Dat
+
         return 1;
     }
 
