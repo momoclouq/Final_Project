@@ -4,11 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Lead implements Data{
-    //testing area
-    public static void main(String[] args){
-        //write your test here
-    }
-
     private String id;
     private String name;
     private Calendar dateOfBirth;
@@ -39,9 +34,6 @@ public class Lead implements Data{
         this.address = address;
     }
 
-    public Lead(){
-        //this is just temporary, after implementation of the methods in class View and Validation, this constructor will be deleted
-    }
     //Turn an int id to the correct format of lead_xxx
     //validation will be handled in the controller class
     private String processId(int id){
@@ -109,6 +101,6 @@ public class Lead implements Data{
     @Override
     public String toFileFormat(){
         //implement - Member: Dat
-        return id + "," + dateOfBirth.get(dateOfBirth.YEAR) + "-"+ (dateOfBirth.get(dateOfBirth.MONTH) + 1) + "-" + dateOfBirth.get(dateOfBirth.DATE) + "," + gender + "," + phone + "," + email + "," + address;
+        return id + "," + name + dateOfBirth.get(dateOfBirth.YEAR) + "-"+ (dateOfBirth.get(dateOfBirth.MONTH) + 1) + "-" + dateOfBirth.get(dateOfBirth.DATE) + "," + gender + "," + phone + "," + email + "," + address;
     }
 }

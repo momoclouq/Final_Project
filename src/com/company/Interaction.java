@@ -26,10 +26,6 @@ public class Interaction implements Data{
         this.potential = potential;
     }
 
-    public Interaction(){
-        //this is just temporary, after implementation of the methods in class View and Validation, this constructor will be deleted
-    }
-
     //process the int id to the string id
     private String processId(int id){
         return "inter_" + String.valueOf(1000+id).substring(1);

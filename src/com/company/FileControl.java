@@ -27,7 +27,7 @@ public class FileControl {
         try {
             PrintWriter output = new PrintWriter(this.file);
             for (Data data: listOfData){
-                output.println(data.toFileFormat());
+                if (data != null) output.println(data.toFileFormat());
             }
             output.close();
         } catch (IOException ex) {
@@ -35,15 +35,16 @@ public class FileControl {
         }
     }
 
-    public int transferData(Lead[] listOfLeads) throws FileNotFoundException, ParseException {
+    public int transferData(Lead[] listOfLeads) throws FileNotFoundException, ParseException, ArrayIndexOutOfBoundsException {
         int index = 0;
         Scanner input = new Scanner(file);
         while (input.hasNext()){
+            //get data for a complete Lead
             String[] allInput = input.nextLine().split(",");
             String id = allInput[0];
             String name = allInput[1];
-            //get date
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            //get Date Of Birth
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(allInput[2]);
             Calendar dateOfBirth = Calendar.getInstance();
             dateOfBirth.setTime(date);
@@ -51,30 +52,35 @@ public class FileControl {
             String phone = allInput[4];
             String email = allInput[5];
             String address = allInput[6];
+
             listOfLeads[index] = new Lead(id, name, dateOfBirth, gender, phone, email, address);
+            //track index for usage later
             index++;
         }
         return index;
     }
 
-    public int transferData(Interaction[] listOfInteractions, Lead[] listOfLeads) throws FileNotFoundException, ParseException {
+    public int transferData(Interaction[] listOfInteractions, Lead[] listOfLeads) throws FileNotFoundException, ParseException, ArrayIndexOutOfBoundsException {
         int index = 0;
         Scanner input = new Scanner(file);
         while (input.hasNext()){
             String[] allInput = input.nextLine().split(",");
             String id = allInput[0];
-            //get date
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            //get date of Interaction
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(allInput[1]);
             Calendar dateOfInteraction = Calendar.getInstance();
             dateOfInteraction.setTime(date);
-            //get id from string
+            //get id from string to get the correct Lead
             String last3Num = allInput[2].substring(5,7);
             int idLead = Integer.valueOf(last3Num);
-            Lead lead = listOfLeads[idLead];
+            Lead lead = listOfLeads[idLead]; //can throw indexOutOfBoundException
+
             String meanOfInteraction = allInput[3];
             String potential = allInput[4];
+
             listOfInteractions[index] = new Interaction(id, dateOfInteraction, lead, meanOfInteraction, potential);
+            //track index for usage later
             index++;
         }
         return index;

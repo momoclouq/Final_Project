@@ -51,7 +51,7 @@ public class Validation {
             if (choice.equals("1") || choice.equals("view lead list"))return "viewLeadList";
             if (choice.equals("2") || choice.equals("add lead") || choice.equals("add")) return "addLead";
             if (choice.equals("3") || choice.equals("delete lead") || choice.equals("delete")) return "deleteLead";
-            if (choice.equals("4") || choice.equals("update lead") || choice.equals("update")) return "update";
+            if (choice.equals("4") || choice.equals("update lead") || choice.equals("update")) return "updateLead";
             if (choice.equals("end")) return "end";
 
             //wrong input
@@ -70,7 +70,7 @@ public class Validation {
             if (choice.equals("1") || choice.equals("view interaction list"))return "viewInteractionList";
             if (choice.equals("2") || choice.equals("add interaction") || choice.equals("add")) return "addInteraction";
             if (choice.equals("3") || choice.equals("delete interaction") || choice.equals("delete")) return "deleteInteraction";
-            if (choice.equals("4") || choice.equals("update interaction") || choice.equals("update")) return "update";
+            if (choice.equals("4") || choice.equals("update interaction") || choice.equals("update")) return "updateInteraction";
             if (choice.equals("end")) return "end";
 
             //wrong input
@@ -88,9 +88,9 @@ public class Validation {
         do{
             //implement - Member: Khang
             //similar to lead, replace with report, check return value in the controller
-            if (choice.equals("1") || choice.equals("display summary report by age"))return "report1";
-            if (choice.equals("2") || choice.equals("display interactions by potential")) return "report2";
-            if (choice.equals("3") || choice.equals("display interactions by month")) return "report3";
+            if (choice.equals("1") || choice.equals("lead report age"))return "report1";
+            if (choice.equals("2") || choice.equals("interaction report potential")) return "report2";
+            if (choice.equals("3") || choice.equals("interaction report month")) return "report3";
             if (choice.equals("end")) return "end";
 
             //wrong input
@@ -108,7 +108,7 @@ public class Validation {
         String address = getLeadAddressInput();
         String email = getLeadEmailInput();
 
-        return new Lead(id, name, dateOfBirth, gender, phone, email, address);
+        return new Lead(id+1, name, dateOfBirth, gender, phone, email, address);
     }
 
     public static Interaction getNewInteractionInput(int id, Lead[] listOfLeads){
@@ -117,7 +117,7 @@ public class Validation {
         String potential = getInteractionPotentialInput();
         Lead lead = listOfLeads[getCurrentLeadIdInput(listOfLeads)];
         String meanOfInteraction = getMeanOfInteractionInput();
-        return new Interaction(id, dateOfInteraction, lead, meanOfInteraction, potential);
+        return new Interaction(id+1, dateOfInteraction, lead, meanOfInteraction, potential);
     }
 
     //basic data input
@@ -125,16 +125,18 @@ public class Validation {
         //implement with listOfLeads - Member: Khang
         //note: this is to check if the lead with id entered by the user is in the listOfLeads or not
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter lead id for processing: ");
+        System.out.print("Enter lead id for processing (id must be of an available lead): ");
         int correctId;
 
         while (true){
             try{
                 correctId = input.nextInt();
                 if(listOfLeads[correctId-1] != null) return correctId-1;
+                else System.out.print("id do not exist, enter again: ");
             } catch (InputMismatchException ex){
-                input.nextLine();
                 System.out.print("Wrong lead id, please enter id again: ");
+            } catch (IndexOutOfBoundsException ex){
+                System.out.print("Id do not exist, please enter id again: ");
             }
         }
     }
@@ -142,13 +144,13 @@ public class Validation {
     public static String getLeadNameInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter lead name");
-        String name = scanner.nextLine();
+        System.out.print("Enter lead name (accept all unicode characters except special characters and numbers): ");
+        String name = scanner.nextLine().trim();
         do{
-            if (name.matches("^[\\p{L} .'-]+$")) return name;
+            if (name.matches("^[\\p{L} .'-]*")) return name;
 
             //wrong input
-            System.out.println("Invalid format. Enter another one: ");
+            System.out.print("Invalid format. Enter another one: ");
             name = scanner.nextLine().trim();
         } while (true);
     }
@@ -183,8 +185,8 @@ public class Validation {
     public static boolean getLeadGenderInput(){
         //implement - Member: Tae
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your gender \n1. Male(m) \n2. Female(f) ");
-        System.out.print("Enter the choice: ");
+        System.out.println("\tGender type \n\t1. Male \n\t2. Female");
+        System.out.print("Enter gender: ");
         String gender = input.nextLine().trim().toLowerCase();
         do{
             if (gender.equals("1") || gender.equalsIgnoreCase("male")) return true;
@@ -199,13 +201,13 @@ public class Validation {
     public static String getLeadPhoneInput(){
         //implement - Member: Khang
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter your phone number (start with 0, length equals 10, only numbers): ");
+        System.out.print("Enter your phone number (start with 0, length equals 10, only numbers): ");
         String phone_no=scanner.nextLine();
         do {
             if (phone_no.length() == 10 && phone_no.charAt(0) == '0' && phone_no.matches("^[0-9]*$")) return phone_no;
 
             //wrong input
-            System.out.println("Invalid number, try again: ");
+            System.out.print("Invalid phone number, try again: ");
             phone_no=scanner.nextLine().trim().toLowerCase();
         }while (true);
     }
@@ -213,25 +215,25 @@ public class Validation {
     public static String getLeadEmailInput(){
         //implement - Member: Tae
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your email address: ");
+        System.out.print("Enter your email address (\"myemail@your.choice\"): ");
         String email = input.nextLine().trim().toLowerCase();
         do {
             if (email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$")) return email;
 
             //wrong input
-            System.out.println("Invalid format. Enter another one: ");
+            System.out.println("Invalid format. Enter another one (\"myemail@your.choice\"): ");
             email = input.nextLine().trim().toLowerCase();
-
         }while (true);
     }
 
     public static String getLeadAddressInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter lead address");
-        String address = scanner.nextLine();
+        System.out.print("Enter lead address (do not contain special characters): ");
+        String address = scanner.nextLine().trim();
         do{
-            if (address.matches("[A-Za-z0-9'\\.\\-\\s\\,]")) return address;
+            //do not contain special characters
+            if (address.matches("^[A-Za-z0-9\\'\\.\\s\\,]*")) return address;
 
             //wrong input
             System.out.println("Invalid format. Enter another one: ");
@@ -242,16 +244,20 @@ public class Validation {
     public static int getCurrentInteractionIdInput(Interaction[] listOfInteractions){
         //implement with listOfInteractions - Member: Tae
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter interaction id for processing: ");
+        System.out.print("Enter interaction id for processing (id must be of an available interaction): ");
         int correctId;
 
         while (true){
             try{
                 correctId = input.nextInt();
                 if(listOfInteractions[correctId-1] != null) return correctId-1;
+                else System.out.print("Id not available, enter interaction id again: ");
             } catch (InputMismatchException ex){
                 input.nextLine();
                 System.out.print("Wrong interaction id, please enter id again: ");
+            } catch (IndexOutOfBoundsException ex){
+                input.nextLine();
+                System.out.print("id do not exist, enter the id again: ");
             }
         }
     }
@@ -282,7 +288,8 @@ public class Validation {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         System.out.print("Enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
-        String date = scanner.nextLine();
+        String date = scanner.nextLine().trim();
+        if (date.length() == 0) return new ReportLead(listOfLeads, type);
         String[] dateList = date.split("-");
         sdf.setLenient(false);
         Calendar startDate = Calendar.getInstance();
@@ -294,13 +301,19 @@ public class Validation {
                 startDate.setTime(startDateFormat);
                 Date endDateFormat = sdf.parse(dateList[1].trim());
                 endDate.setTime(endDateFormat);
-                break;
+                if (startDate.compareTo(endDate) < 0) break;
+                else {
+                    System.out.print("Invalid date, start date is later than end date. Please re-enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
+                    date = scanner.nextLine().trim();
+                    if (date.length() == 0) return new ReportLead(listOfLeads, type);
+                    dateList = date.split("-");
+                }
             } catch (ParseException e) {
                 System.out.print("Invalid date. Please re-enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
                 date = scanner.nextLine();
+                if (date.length() == 0) return new ReportLead(listOfLeads, type);
                 dateList = date.split("-");
             } catch (ArrayIndexOutOfBoundsException ex){
-                if (dateList.length == 0) return new ReportLead(listOfLeads, type);
                 if (dateList.length == 1) return new ReportLead(startDate, listOfLeads, type);
             }
         }
@@ -310,10 +323,10 @@ public class Validation {
 
     public static ReportInteraction getReportInteraction(Interaction[] listOfInteractions, String type){
         Scanner scanner = new Scanner(System.in);
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         System.out.print("Enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
-        String date = scanner.nextLine();
+        String date = scanner.nextLine().trim();
+        if (date.length() == 0) return new ReportInteraction(listOfInteractions, type);
         String[] dateList = date.split("-");
         sdf.setLenient(false);
         Calendar startDate = Calendar.getInstance();
@@ -325,13 +338,19 @@ public class Validation {
                 startDate.setTime(startDateFormat);
                 Date endDateFormat = sdf.parse(dateList[1].trim());
                 endDate.setTime(endDateFormat);
-                break;
+                if (startDate.compareTo(endDate) < 0) break;
+                else {
+                    System.out.print("Invalid date, start date is later than end date. Please re-enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
+                    date = scanner.nextLine().trim();
+                    if (date.length() == 0) return new ReportInteraction(listOfInteractions, type);
+                    dateList = date.split("-");
+                }
             } catch (ParseException e) {
                 System.out.print("Invalid date. Please re-enter the date for report (DD/MM/YYYY - DD/MM/YYYY): ");
                 date = scanner.nextLine();
+                if (date.length() == 0) return new ReportInteraction(listOfInteractions, type);
                 dateList = date.split("-");
             } catch (ArrayIndexOutOfBoundsException ex){
-                if (dateList.length == 0) return new ReportInteraction(listOfInteractions, type);
                 if (dateList.length == 1) return new ReportInteraction(startDate, listOfInteractions, type);
             }
         }
@@ -360,7 +379,7 @@ public class Validation {
     public static String getInteractionPotentialInput(){
         //implement - Member: Trung
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter interaction's potential (1. positive/2. neutral/3. negative): ");
+        System.out.print("Enter interaction's potential (1. positive/2. neutral/3. negative): ");
         String potential = scanner.nextLine().trim().toLowerCase();
         do{
             if (potential.equals("positive") || potential.equals("neutral") || potential.equals("negative")) return potential;

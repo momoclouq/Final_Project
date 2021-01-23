@@ -7,16 +7,6 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Controller {
-    //testing area
-    public static void main(String[] args){
-        try{
-            Controller program = new Controller();
-            program.start();
-        } catch (Exception ex){
-            System.out.println("error");
-        }
-    }
-
     private Lead[] listOfLeads = new Lead[100000];
     private Interaction[] listOfInteraction = new Interaction[100000];
     private View view;
@@ -24,13 +14,11 @@ public class Controller {
     private int indexInteraction;
     private FileControl leadFile;
     private FileControl interactionFile;
-    private Validation validate;
 
     //constructor
     public Controller() throws IOException, ParseException {
         this.leadFile = new FileControl("leads.csv");
         this.interactionFile = new FileControl("interactions.csv");
-        System.out.println("hehe");
         //implements - Member: Khang
         //update listOfLeads and listOfInteractions from fileControl
         indexLead = leadFile.transferData(listOfLeads);
@@ -41,7 +29,6 @@ public class Controller {
     //starting the program
     public void start(){
         //initialization
-        try {
             String location = "main";
             this.view.firstWords();
 
@@ -57,9 +44,6 @@ public class Controller {
 
             System.out.println("finished! I will rest now");
             System.exit(1);
-        } catch (Exception ex) {
-            System.out.println("Exception: " + ex.getMessage());
-        }
     }
 
     private String changeLocation(String currentLocation){
@@ -110,41 +94,49 @@ public class Controller {
             //implement - Member: Tae
             int idLeadDelete = View.deleteLeadMenu(listOfLeads);
             listOfLeads[idLeadDelete] = null;
+            leadFile.fileUpdateAll(listOfLeads);
+            System.out.println("lead with id: " + (idLeadDelete+1) + " deleted.");
 
             return "lead";
         }
 
         if (currentLocation.equals("addLead")) {
             listOfLeads[indexLead] = View.addLeadMenu(indexLead);
+            System.out.println("lead with id: " + (indexLead+1) + " added.");
             indexLead++;
+            leadFile.fileUpdateAll(listOfLeads);
             return "lead";
         }
 
         if (currentLocation.equals("updateLead")){
             int idLeadUpdate = View.updateLeadMenu(listOfLeads);
             listOfLeads[idLeadUpdate] = View.getNewLead(idLeadUpdate);
-
+            leadFile.fileUpdateAll(listOfLeads);
+            System.out.println("lead with id: " + (idLeadUpdate+1) + " updated.");
             return "lead";
         }
 
         if (currentLocation.equals("addInteraction")){
-            listOfInteraction[indexInteraction] = View.getNewInteraction(indexInteraction, listOfLeads);
+            listOfInteraction[indexInteraction] = View.addInteractionMenu(indexInteraction, listOfLeads);
             indexInteraction++;
+            interactionFile.fileUpdateAll(listOfInteraction);
+            System.out.println("interaction with id: " + (indexInteraction+1) + " added.");
             return "interaction";
         }
 
         if (currentLocation.equals("deleteInteraction")){
             int correctId = View.deleteInteractionMenu(listOfInteraction);
             listOfInteraction[correctId] = null;
-
-            System.out.println("End interaction--------------------------");
+            interactionFile.fileUpdateAll(listOfInteraction);
+            System.out.println("interaction with id: " + (correctId+1) + " deleted.");
             return "interaction";
         }
 
         if (currentLocation.equals("updateInteraction")){
             int idInteractionUpdate = View.updateInteractionMenu(listOfInteraction);
             listOfInteraction[idInteractionUpdate] = View.getNewInteraction(idInteractionUpdate, listOfLeads);
-
+            interactionFile.fileUpdateAll(listOfInteraction);
+            System.out.println("interaction with id: " + (idInteractionUpdate+1) + " updated");
             return "interaction";
         }
 
@@ -164,7 +156,7 @@ public class Controller {
 
         if (currentLocation.equals("report3")){
             ReportInteraction report = Validation.getReportInteraction(listOfInteraction, "month");
-            View.viewReportInteractionByPotential(report);
+            View.viewReportInteractionByMonth(report);
 
             return "report";
         }

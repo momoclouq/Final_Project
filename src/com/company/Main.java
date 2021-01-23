@@ -10,12 +10,15 @@ public class Main {
 	// write your code here
         try{
             Controller control = new Controller();
+            control.start();
         } catch (FileNotFoundException ex){
             System.out.println("File not found");
         } catch (ParseException ex){
             System.out.println("file contain wrong input");
         } catch (IOException ex){
             System.out.println("io exception");
+        } catch (ArrayIndexOutOfBoundsException ex){
+            System.out.println("file interactions.csv does not sync with leads.csv");
         }
     }
 }

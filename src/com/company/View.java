@@ -10,7 +10,10 @@ public class View {
     public static void firstWords(){
         System.out.println("CRM system initialized.");
         System.out.println("Data will be stored in leads.csv and interaction.csv");
-        System.out.println("Enter 0 in the menu to quit the program");
+        System.out.println("If you change the data in the file and reset the program, the id of each lead and interaction may be wrong");
+        System.out.println("To maintain optimal usability, keep the ids of the data sequential");
+        System.out.println("Enter \"end\" in the menu to return to the previous menu");
+        System.out.println("Enter \"end\" in the main menu to quit the program");
         System.out.println("------------------------------------------");
     }
 
@@ -49,9 +52,9 @@ public class View {
     public static String subMenuReport(){
         //implement - Member: Khang
         System.out.println("Report Management");
-        System.out.println("\t Enter\"1\" or \"report lead age\" to view a lead report by age.");
-        System.out.println("\t Enter\"2\" or \"report interaction potential\" to view a interaction report by potential.");
-        System.out.println("\t Enter\"3\" or \"report interaction month\" to view a interaction report by month.");
+        System.out.println("\t Enter \"1\" or \"report lead age\" to view a lead report by age.");
+        System.out.println("\t Enter \"2\" or \"report interaction potential\" to view a interaction report by potential.");
+        System.out.println("\t Enter \"3\" or \"report interaction month\" to view a interaction report by month.");
 
         System.out.print("choice: ");
         return Validation.getReportMenuInput();
@@ -108,15 +111,16 @@ public class View {
 
     public static Interaction getNewInteraction(int id, Lead[] listOfLeads){
         //implements - Member: minh
-        System.out.println("\t. " + id);
         Interaction newInteraction = Validation.getNewInteractionInput(id, listOfLeads);
         return newInteraction;
     }
 
-    public static Interaction addInteractionMenu(){
+    public static Interaction addInteractionMenu(int id, Lead[] listOfLeads){
         //implement - Member: Tae
-        //use getNewInteraction
-        return new Interaction();
+        System.out.println("Adding a new interaction");
+        Interaction output = getNewInteraction(id, listOfLeads);
+        System.out.println("Interaction " + id + " added to the system");
+        return output;
     }
 
     public static int deleteInteractionMenu(Interaction[] listOfInteractions){
@@ -146,7 +150,7 @@ public class View {
         printReport(report);
     }
 
-    public void viewReportInteractionByMonth(ReportInteraction report){
+    public static void viewReportInteractionByMonth(ReportInteraction report){
         //implement - Member: Dat
         System.out.println("Interaction report by month. Period: " + report.getPeriod());
         printReport(report);
@@ -154,12 +158,13 @@ public class View {
 
     private static void printReport(Report report){
         for (ReportData data: report.getOutput()){
-            System.out.printf("%s15s", data.getHeader());
+            System.out.printf("%20s", data.getHeader());
         }
 
         System.out.println("");
         for (ReportData data: report.getOutput()){
-            System.out.printf("%15d", data.getCount());
+            System.out.printf("%20d", data.getCount());
         }
+        System.out.println("");
     }
 }
