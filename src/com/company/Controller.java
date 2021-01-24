@@ -118,9 +118,10 @@ public class Controller {
 
         if (currentLocation.equals("addInteraction")){
             listOfInteraction[indexInteraction] = View.addInteractionMenu(indexInteraction, listOfLeads);
+            System.out.println("interaction with id: " + (indexInteraction+1) + " added.");
             indexInteraction++;
             interactionFile.fileUpdateAll(listOfInteraction);
-            System.out.println("interaction with id: " + (indexInteraction+1) + " added.");
+
             return "interaction";
         }
 

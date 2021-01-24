@@ -1,5 +1,5 @@
-inter_001,1111-1-1,lead_003,email,positive
-inter_004,2020-2-22,lead_001,email,neutral
+inter_001,1111-1-1,lead_001,email,positive
+inter_002,2020-2-22,lead_001,email,neutral
 inter_003,2020-4-20,lead_001,email,negative
 inter_004,2020-5-22,lead_001,email,neutral
 inter_005,2020-6-20,lead_001,email,positive
@@ -12,7 +12,7 @@ inter_011,2020-4-20,lead_001,email,positive
 inter_012,2020-5-22,lead_001,email,neutral
 inter_013,2020-5-20,lead_001,email,positive
 inter_014,2020-6-22,lead_001,email,neutral
-inter_015,2912-12-9,lead_005,face to face,neutral
+inter_015,2912-12-9,lead_001,face to face,neutral
 inter_016,2020-8-22,lead_001,email,neutral
 inter_017,2020-2-20,lead_001,email,positive
 inter_018,2020-11-22,lead_001,email,neutral
@@ -26,3 +26,6 @@ inter_025,2020-1-20,lead_001,email,positive
 inter_026,2020-1-22,lead_001,email,neutral
 inter_027,2020-1-20,lead_001,email,positive
 inter_028,2020-1-22,lead_001,email,neutral
+inter_029,2010-12-16,lead_001,face to face,positive
+inter_030,2010-12-16,lead_001,email,positive
+inter_031,2010-12-16,lead_001,email,positive

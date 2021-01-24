@@ -137,11 +137,13 @@ class ReportLead extends Report{
         output.add(new ReportData("10-20 (years old)", 0));
         output.add(new ReportData("20-60 (years old)", 0));
         output.add(new ReportData(">60 (years old)", 0));
+        Calendar cal = Calendar.getInstance();
+        int currentYear = cal.get(Calendar.YEAR);
 
         //data
         for (Lead lead: listOfLeads){
             if (lead != null && inReport(lead.getDateOfBirth())){
-                int age = getAge(lead);
+                int age = currentYear - getAge(lead);
                 if (age >= 0 && age <= 10) output.get(0).increase();
                 else if (age >= 11 && age <= 20) output.get(1).increase();
                 else if (age >= 21 && age <= 60) output.get(2).increase();

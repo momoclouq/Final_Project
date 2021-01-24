@@ -119,7 +119,7 @@ public class View {
         //implement - Member: Tae
         System.out.println("Adding a new interaction");
         Interaction output = getNewInteraction(id, listOfLeads);
-        System.out.println("Interaction " + id + " added to the system");
+        System.out.println("Interaction " + (id+1) + " added to the system");
         return output;
     }
 
